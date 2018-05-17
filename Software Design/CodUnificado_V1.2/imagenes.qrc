@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Imagenes/flecha.png</file>
+        <file>Imagenes/flecha►.png</file>
+        <file>Imagenes/flechaabajo.png</file>
+        <file>Imagenes/flechaizquierda.png</file>
+        <file>Imagenes/lapiz abajo.jpg</file>
+        <file>Imagenes/lapiz arriba.jpg</file>
+    </qresource>
+</RCC>
