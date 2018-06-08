@@ -54,15 +54,6 @@ private slots:
     void serialReceived();
     void inicializacion_serie(QString nombre_puerto);
 
-    void on_actionNew_triggered();
-    void on_actionOpen_triggered();
-    void on_actionSave_triggered();
-    void on_actionCopy_triggered();
-    void on_actionPaste_triggered();
-    void on_actionSave_As_triggered();
-    void on_actionCut_triggered();
-    void on_actionUndo_triggered();
-    void on_actionRedo_triggered();
     void on_push_imprimir_clicked();
     void on_button_refresh_ports_clicked();
     void on_comboBox_puertos_currentIndexChanged(int index);

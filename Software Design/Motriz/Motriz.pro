@@ -13,7 +13,6 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    funciones_block_notas.cpp \
     serie.cpp \
     tcp_server.cpp
 

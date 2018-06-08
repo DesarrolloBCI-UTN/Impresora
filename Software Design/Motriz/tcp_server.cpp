@@ -103,6 +103,19 @@ void MainWindow::socket_error()
     log("socket_error [" + QString::number(socket->error()) + "] : " + socket->errorString());
 }
 
+/**
+ * Aqui proceso la info recivida del servidor.
+ * Accion: Remarca y mantiene el recuardo de la imagen seleccionada
+ * por el usuario y ejecuta la misma tarea por tiempo indefinido
+ * hasta la llegada de otra orden de Accion distinta.
+ * Neutro: Para la accion que se estaba realizando
+ * Se debe ademas detener la accion si se llega al final de la hoja.
+ *
+ * De no recibir nada, pregunto si llego al final de hoja o
+ * lo pregunto dentro de Neutro?.
+ *
+ * @brief MainWindow::socket_readyRead
+ */
 void MainWindow::socket_readyRead()
 {
     while(socket->bytesAvailable())
@@ -116,7 +129,7 @@ void MainWindow::socket_readyRead()
         }
         else if(data==(QString)"NEUTRO")
         {
-            log("Mantener Accion previa?");
+            log("Mantener Accion previa");
         }
         else
         {
