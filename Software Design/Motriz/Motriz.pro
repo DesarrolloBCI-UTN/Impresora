@@ -13,7 +13,6 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    serie.cpp \
     tcp_server.cpp
 
 HEADERS  += mainwindow.h

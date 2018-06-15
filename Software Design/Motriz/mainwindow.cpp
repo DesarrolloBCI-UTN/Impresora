@@ -1,6 +1,38 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::Temporizador(){
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()),this,SLOT(tiempo()));
+    timer->start(2000);
+}
+
+void MainWindow::tiempo(){
+    switch(k){
+     case 0:
+        ui->frame->move(57,127);
+        break;
+    case 1:
+        ui->frame->move(187,127);
+        break;
+    case 2:
+        ui->frame->move(317,127);
+        break;
+    case 3:
+        ui->frame->move(447,127);
+        break;
+    case 4:
+        ui->frame->move(577,127);
+        break;
+    case 5:
+        ui->frame->move(707,127);
+        break;
+    }
+    k++;
+    k%=6;
+    qDebug() << "Tiempo";
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -11,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&server, SIGNAL(newConnection()), this, SLOT(server_newConnection()));
     ui->btnConnect->setFocus();
 
-    EnumerarPuertos();
+//    EnumerarPuertos();
     ActualizarEstadoConexion();
     qDebug()<<"Espero coneccion puerto serie";
 }
@@ -35,7 +67,7 @@ void MainWindow::CerrarPuertos()
  */
 void MainWindow::on_button_refresh_ports_clicked()
 {
-     EnumerarPuertos();
+ //    EnumerarPuertos();
      ActualizarEstadoConexion();
 }
 
@@ -96,7 +128,7 @@ void MainWindow::ActualizarEstadoConexion()
         ui->button_connect->setText("Desconectar");
         connect(serial,SIGNAL(readyRead()),this,SLOT(serialReceived())); //una vez que esta conectado configuro la interupcion por una rx serie
 
-       // ui->tabWidget->setTabEnabled(1,TRUE);
+        ui->tabWidget->setTabEnabled(1,TRUE);
        // ui->tab_Codigo->show();
 
     }
@@ -104,7 +136,7 @@ void MainWindow::ActualizarEstadoConexion()
     {
         //ui->mainToolBar->hide();
         ui->menuBar->hide();
-       // ui->tabWidget->setTabEnabled(1,FALSE);
+        ui->tabWidget->setTabEnabled(1,FALSE);
 
         ui->edit_estado->setStyleSheet("font-weight: normal; color: white; background-color: red;");
         ui->edit_estado->setText("Desconectado");

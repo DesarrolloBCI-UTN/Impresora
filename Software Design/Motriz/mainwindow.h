@@ -37,6 +37,11 @@ public:
     void envio_linea_impresion();
     void Maquina_estado_impresora();
 
+    void Temporizador();
+    QTimer *timer;
+public slots:
+    void tiempo();
+
 private slots:
     void on_btnConnect_clicked();
     void on_btnListen_clicked();
@@ -51,9 +56,6 @@ private slots:
     void socket_stateChanged();
     void server_newConnection();
 
-    void serialReceived();
-    void inicializacion_serie(QString nombre_puerto);
-
     void on_push_imprimir_clicked();
     void on_button_refresh_ports_clicked();
     void on_comboBox_puertos_currentIndexChanged(int index);
@@ -66,6 +68,8 @@ private:
     bool connected;
     QTcpServer server;
     QTcpSocket *socket;
+
+    uint k = 0; //variable del temporizador
 
     int flag_conectado=0;
     int flag_impresion=0;

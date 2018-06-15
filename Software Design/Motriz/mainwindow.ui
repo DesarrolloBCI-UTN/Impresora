@@ -30,7 +30,7 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>10</y>
       <width>881</width>
       <height>491</height>
@@ -256,27 +256,13 @@
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>Page</string>
+      <string>Interfaz</string>
      </attribute>
-     <widget class="QGraphicsView" name="graphicsView_3">
-      <property name="geometry">
-       <rect>
-        <x>300</x>
-        <y>100</y>
-        <width>104</width>
-        <height>104</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">
-background-image: url(:/Imagenes/flechaabajo.png);</string>
-      </property>
-     </widget>
      <widget class="QGraphicsView" name="graphicsView_4">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>240</y>
+        <x>450</x>
+        <y>130</y>
         <width>104</width>
         <height>104</height>
        </rect>
@@ -288,8 +274,8 @@ background-image: url(:/Imagenes/flechaabajo.png);</string>
      <widget class="QFrame" name="frame">
       <property name="geometry">
        <rect>
-        <x>157</x>
-        <y>97</y>
+        <x>57</x>
+        <y>127</y>
         <width>110</width>
         <height>110</height>
        </rect>
@@ -307,8 +293,8 @@ background-image: url(:/Imagenes/flechaabajo.png);</string>
      <widget class="QGraphicsView" name="graphicsView">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>100</y>
+        <x>60</x>
+        <y>130</y>
         <width>104</width>
         <height>104</height>
        </rect>
@@ -320,8 +306,8 @@ background-image: url(:/Imagenes/flechaabajo.png);</string>
      <widget class="QGraphicsView" name="graphicsView_2">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>100</y>
+        <x>320</x>
+        <y>130</y>
         <width>104</width>
         <height>104</height>
        </rect>
@@ -333,8 +319,8 @@ background-image: url(:/Imagenes/flechaabajo.png);</string>
      <widget class="QGraphicsView" name="graphicsView_6">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>240</y>
+        <x>710</x>
+        <y>130</y>
         <width>104</width>
         <height>104</height>
        </rect>
@@ -346,14 +332,38 @@ background-image: url(:/Imagenes/flechaabajo.png);</string>
      <widget class="QGraphicsView" name="graphicsView_5">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>240</y>
+        <x>580</x>
+        <y>130</y>
         <width>104</width>
         <height>104</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-image: url(:/Imagenes/lapiz abajo.jpg);</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>310</y>
+        <width>69</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QGraphicsView" name="graphicsView_3">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>130</y>
+        <width>104</width>
+        <height>104</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+background-image: url(:/Imagenes/flechaabajo.png);</string>
       </property>
      </widget>
     </widget>
