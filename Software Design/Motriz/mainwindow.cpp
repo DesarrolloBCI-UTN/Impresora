@@ -128,7 +128,7 @@ void MainWindow::ActualizarEstadoConexion()
         ui->button_connect->setText("Desconectar");
         connect(serial,SIGNAL(readyRead()),this,SLOT(serialReceived())); //una vez que esta conectado configuro la interupcion por una rx serie
 
-        ui->tabWidget->setTabEnabled(1,TRUE);
+        //ui->tabWidget->setTabEnabled(1,TRUE);
        // ui->tab_Codigo->show();
 
     }
@@ -136,7 +136,7 @@ void MainWindow::ActualizarEstadoConexion()
     {
         //ui->mainToolBar->hide();
         ui->menuBar->hide();
-        ui->tabWidget->setTabEnabled(1,FALSE);
+        //ui->tabWidget->setTabEnabled(1,FALSE);
 
         ui->edit_estado->setStyleSheet("font-weight: normal; color: white; background-color: red;");
         ui->edit_estado->setText("Desconectado");

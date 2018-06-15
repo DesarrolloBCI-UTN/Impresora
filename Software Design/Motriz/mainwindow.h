@@ -70,6 +70,7 @@ private:
     QTcpSocket *socket;
 
     uint k = 0; //variable del temporizador
+    uint CBFreq;
 
     int flag_conectado=0;
     int flag_impresion=0;

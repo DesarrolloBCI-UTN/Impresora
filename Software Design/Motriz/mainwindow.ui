@@ -268,7 +268,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-image: url(:/Imagenes/flecha►.png);</string>
+       <string notr="true">background-image: url(:/Imagenes/flechaderecha.png);</string>
       </property>
      </widget>
      <widget class="QFrame" name="frame">
