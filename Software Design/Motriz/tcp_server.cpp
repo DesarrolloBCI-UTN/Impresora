@@ -130,7 +130,7 @@ void MainWindow::socket_readyRead()
             log("Realizar Accion!");
 
         }
-        else if(data==(QString)"NEUTRO")
+        else if(data==(QString)"1,0")
         {
             log("Descongelar recuadro");
             emit timer->start(CBFreq);

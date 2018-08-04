@@ -4,10 +4,10 @@
 #
 #-------------------------------------------------
 QT       += core gui network serialport
-
+QMAKE_CXXFLAGS += -std=c++0x
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = TCPSocket
+TARGET = Motriz
 TEMPLATE = app
 
 
