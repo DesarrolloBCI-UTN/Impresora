@@ -15,7 +15,9 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     tcp_server.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    tcp_server.h \
+    Interfaz.h
 
 FORMS    += mainwindow.ui
 

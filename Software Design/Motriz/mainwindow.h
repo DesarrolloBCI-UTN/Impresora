@@ -37,6 +37,7 @@ public:
     void envio_linea_impresion();
     void Maquina_estado_impresora();
 
+    void EvaluarAccion(QString data);
     void Temporizador();
     QTimer *timer;
 public slots:

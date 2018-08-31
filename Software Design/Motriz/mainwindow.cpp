@@ -178,7 +178,7 @@ void MainWindow::envio_linea_impresion()
     static QString Texto2;
     static int i=0;
 
-    qDebug("%d",i);
+    //qDebug("%d",i);
     serial->write("#");
     Texto2=lineas_codigo.at(i);
     serial->write(Texto2.toLocal8Bit()); //convierto a qBYtearray y envio el QBYTE

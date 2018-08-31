@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "tcp_server.h"
 
 /* TCP Server/Socket Functions.
  *
@@ -104,15 +105,6 @@ void MainWindow::socket_error()
 }
 
 /**
- * Aqui proceso la info recivida del servidor.
- * Accion: Remarca y mantiene el recuardo de la imagen seleccionada
- * por el usuario y ejecuta la misma tarea por tiempo indefinido
- * hasta la llegada de otra orden de Accion distinta.
- * Neutro: Para la accion que se estaba realizando
- * Se debe ademas detener la accion si se llega al final de la hoja.
- *
- * De no recibir nada, pregunto si llego al final de hoja o
- * lo pregunto dentro de Neutro?.
  *
  * @brief MainWindow::socket_readyRead
  */
@@ -120,30 +112,9 @@ void MainWindow::socket_readyRead()
 {
     while(socket->bytesAvailable())
     {
-        QByteArray data = socket->readAll();
+        QString data = socket->readAll();
         log("socket_readyRead [" + QString::number(data.size()) + "] : \n" + data);
-
-        if(data==(QString)"ACCION")
-        {
-            log("Congelar recuadro");
-            emit timer->stop();
-            log("Realizar Accion!");
-
-        }
-        else if(data==(QString)"1,0")
-        {
-            log("Descongelar recuadro");
-            emit timer->start(CBFreq);
-            log("Mantener Accion previa");
-
-
-        }
-        else
-        {
-
-            log("nada");
-        }
-
+        EvaluarAccion(data);
     }
 }
 void MainWindow::socket_stateChanged()
@@ -162,4 +133,50 @@ void MainWindow::server_newConnection()
 void MainWindow::log(QString msg)
 {
     ui->txtReceive->appendPlainText(msg + "\n---");
+}
+
+
+void MainWindow::EvaluarAccion(QString data)
+{
+    /*
+     * Los datos enviados por el casco son de la forma <Accion,IntensidadDeSeñal>
+     * por lo que hago un split con \\W+
+     * Donde    dataList[0]= Accion
+     *          dataList[1]= IntensidadDeSeñal
+     */
+    QStringList dataList = data.split(QRegExp("\\W+"), QString::SkipEmptyParts);
+
+    if(dataList[intensityIndex]>INTENSIDAD_BASE)
+    {
+
+        if(dataList[actionIndex]==ACCION1)
+        {
+            emit timer->stop();
+            log("Congelar recuadro");
+            log("Realizar Accion1!");
+
+            lineas_codigo=SUBIR.split(QRegExp("\\W+"), QString::SkipEmptyParts);
+            envio_linea_impresion();
+
+        }
+        else if(dataList[actionIndex]==ACCION2)
+        {
+
+            emit timer->stop();
+            log("Congelar recuadro");
+            log("Realizar Accion2!");
+            //lineas_codigo[0]=BAJAR;
+
+        }
+    }else if(dataList[actionIndex]==NEUTRO)
+    {
+        emit timer->start(CBFreq);
+        log("Descongelar recuadro");
+        log("Mantener Accion previa");
+
+        //lineas_codigo[0]=PARAR;
+
+
+
+    }
 }
