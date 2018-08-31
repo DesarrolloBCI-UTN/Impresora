@@ -7,29 +7,33 @@ void MainWindow::Temporizador(){
     timer->start(2000);
 }
 
+void MainWindow::setframepos(int x, int y){
+        ui->frame->move(x,y);
+}
+
 void MainWindow::tiempo(){
-    switch(k){
-     case 0:
-        ui->frame->move(57,127);
-        break;
-    case 1:
-        ui->frame->move(187,127);
-        break;
-    case 2:
-        ui->frame->move(317,127);
-        break;
-    case 3:
-        ui->frame->move(447,127);
-        break;
-    case 4:
-        ui->frame->move(577,127);
-        break;
-    case 5:
-        ui->frame->move(707,127);
-        break;
-    }
     k++;
     k%=6;
+    switch(k){
+     case 0:
+        setframepos(50, 120);
+        break;
+    case 1:
+        setframepos(180, 120);
+        break;
+    case 2:
+        setframepos(310, 120);
+        break;
+    case 3:
+        setframepos(440, 120);
+        break;
+    case 4:
+        setframepos(570, 120);
+        break;
+    case 5:
+        setframepos(700, 120);
+        break;
+    }
     qDebug() << "Tiempo";
 }
 
@@ -67,7 +71,7 @@ void MainWindow::CerrarPuertos()
  */
 void MainWindow::on_button_refresh_ports_clicked()
 {
- //    EnumerarPuertos();
+     EnumerarPuertos();
      ActualizarEstadoConexion();
 }
 
@@ -115,7 +119,17 @@ void MainWindow::on_button_connect_clicked()
    ActualizarEstadoConexion();
    return;
 }
+void MainWindow::EnumerarPuertos()
+{
+    ui->comboBox_puertos->clear();
 
+    QList<QSerialPortInfo> ports = QSerialPortInfo::availablePorts();
+
+    for (int i = 0; i < ports.size(); i++)
+    {
+        ui->comboBox_puertos->addItem(ports.at(i).portName(), ports.at(i).portName());
+    }
+}
 void MainWindow::ActualizarEstadoConexion()
 {
     if (flag_conectado==1)
@@ -224,4 +238,33 @@ void MainWindow::Maquina_estado_impresora()
         return;
     }
     qDebug()<<"esperando...";
+}
+
+void MainWindow::on_comboBox_currentIndexChanged(int index)
+{
+    switch(index){
+    case 0:
+        resetframe(500);
+        break;
+    case 1:
+        resetframe(1000);
+        break;
+    case 2:
+        resetframe(2000);
+        break;
+    case 3:
+        resetframe(3000);
+        break;
+    case 4:
+        resetframe(4000);
+        break;
+    }
+}
+
+void MainWindow::resetframe(int index)
+{
+    timer->start(index);
+//    setframepos(50,120);
+//    k = 0;
+
 }

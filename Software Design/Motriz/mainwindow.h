@@ -64,6 +64,8 @@ private slots:
     void on_pushButton_pedido_linea_clicked();
 
 
+    void on_comboBox_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
     bool connected;
@@ -87,6 +89,8 @@ private:
     void log(QString msg);
     void socket_events();
     void update(bool connected);
+    void resetframe(int index);
+    void setframepos(int x, int y);
 };
 
 #endif // MAINWINDOW_H
