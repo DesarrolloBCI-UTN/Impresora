@@ -4,7 +4,7 @@
 void MainWindow::Temporizador(){
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()),this,SLOT(tiempo()));
-    timer->start(2000);
+    timer->start(500);
 }
 
 void MainWindow::setframepos(int x, int y){
@@ -12,9 +12,9 @@ void MainWindow::setframepos(int x, int y){
 }
 
 void MainWindow::tiempo(){
-    k++;
-    k%=6;
-    switch(k){
+    Accion++;
+    Accion%=6;
+    switch(Accion){
      case 0:
         setframepos(50, 120);
         break;
@@ -34,7 +34,6 @@ void MainWindow::tiempo(){
         setframepos(700, 120);
         break;
     }
-    qDebug() << "Tiempo";
 }
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -47,9 +46,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&server, SIGNAL(newConnection()), this, SLOT(server_newConnection()));
     ui->btnConnect->setFocus();
 
-//    EnumerarPuertos();
+    EnumerarPuertos();
     ActualizarEstadoConexion();
-    qDebug()<<"Espero coneccion puerto serie";
 }
 
 MainWindow::~MainWindow()
@@ -244,27 +242,28 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
     switch(index){
     case 0:
-        resetframe(500);
+        CBFreq = 500;
         break;
     case 1:
-        resetframe(1000);
+        CBFreq = 1000;
         break;
     case 2:
-        resetframe(2000);
+        CBFreq = 2000;
         break;
     case 3:
-        resetframe(3000);
+        CBFreq = 3000;
         break;
     case 4:
-        resetframe(4000);
+        CBFreq = 4000;
         break;
     }
+    resetframe(CBFreq);
 }
 
 void MainWindow::resetframe(int index)
 {
     timer->start(index);
 //    setframepos(50,120);
-//    k = 0;
+//    Accion = 0;
 
 }
