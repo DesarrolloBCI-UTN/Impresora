@@ -152,6 +152,7 @@ void MainWindow::EvaluarAccion(QString data)
         if(dataList[actionIndex]==ACCION)
         {
             emit timer->stop();
+            ui->frame->setStyleSheet("QFrame { color: rgb(0,255,0) }");
             switch(Accion)
             {
             case 0:
@@ -180,6 +181,7 @@ void MainWindow::EvaluarAccion(QString data)
         }
     }else if(dataList[actionIndex]==NEUTRO)
     {
+          ui->frame->setStyleSheet("QFrame { color: rgb(255,0,0) }");
         emit timer->start(CBFreq);
         /*
          * No mantiene accion previa
