@@ -149,34 +149,43 @@ void MainWindow::EvaluarAccion(QString data)
     if(dataList[intensityIndex]>INTENSIDAD_BASE)
     {
 
-        if(dataList[actionIndex]==ACCION1)
+        if(dataList[actionIndex]==ACCION)
         {
             emit timer->stop();
-            log("Congelar recuadro");
-            log("Realizar Accion1!");
-
-            lineas_codigo=SUBIR.split(QRegExp("\\W+"), QString::SkipEmptyParts);
+            switch(Accion)
+            {
+            case 0:
+                lineas_codigo=ADELANTE.split(QRegExp("\\W+"), QString::SkipEmptyParts);
+                break;
+            case 1:
+                lineas_codigo=ATRAS.split(QRegExp("\\W+"), QString::SkipEmptyParts);
+                break;
+            case 2:
+                lineas_codigo=IZQUIERDA.split(QRegExp("\\W+"), QString::SkipEmptyParts);
+                break;
+            case 3:
+                lineas_codigo=DERECHA.split(QRegExp("\\W+"), QString::SkipEmptyParts);
+                break;
+            case 4:
+                lineas_codigo=BAJAR.split(QRegExp("\\W+"), QString::SkipEmptyParts);
+                break;
+            case 5:
+                lineas_codigo=SUBIR.split(QRegExp("\\W+"), QString::SkipEmptyParts);
+                break;
+            default:
+                break;
+            }
             envio_linea_impresion();
-
-        }
-        else if(dataList[actionIndex]==ACCION2)
-        {
-
-            emit timer->stop();
-            log("Congelar recuadro");
-            log("Realizar Accion2!");
-            //lineas_codigo[0]=BAJAR;
 
         }
     }else if(dataList[actionIndex]==NEUTRO)
     {
         emit timer->start(CBFreq);
-        log("Descongelar recuadro");
-        log("Mantener Accion previa");
-
-        //lineas_codigo[0]=PARAR;
-
-
+        /*
+         * No mantiene accion previa
+         */
+        lineas_codigo=PARAR.split(QRegExp("\\W+"), QString::SkipEmptyParts);
+        envio_linea_impresion();
 
     }
 }

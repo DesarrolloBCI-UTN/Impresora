@@ -13,8 +13,8 @@
  * El casco indica 1 como neutro, por eso lo defino como 1
  */
 #define NEUTRO QString::number(1)
-#define ACCION1 QString::number(2)
-#define ACCION2 QString::number(3)
+#define ACCION QString::number(2)
+
 
 
 
