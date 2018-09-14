@@ -255,6 +255,11 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
     case 4:
         CBFreq = 4000;
         break;
+    case 5:
+        CBFreq = 15000;
+        break;
+    default:
+        break;
     }
     resetframe(CBFreq);
 }
