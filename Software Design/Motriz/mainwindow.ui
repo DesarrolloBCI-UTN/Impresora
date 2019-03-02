@@ -37,7 +37,10 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
+    </property>
+    <property name="movable">
+     <bool>true</bool>
     </property>
     <property name="tabBarAutoHide">
      <bool>false</bool>
@@ -254,7 +257,7 @@
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="tab_Interfaz">
      <attribute name="title">
       <string>Interfaz</string>
      </attribute>
@@ -476,7 +479,7 @@ background-image: url(:/Imagenes/flechaabajo.png);</string>
      <x>0</x>
      <y>0</y>
      <width>904</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
