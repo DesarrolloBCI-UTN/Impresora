@@ -21,7 +21,7 @@
 /*
  * Comandos hacia el hardware
  */
-#define PARAR       QString::number(100)
+#define PARAR       QString::number(107)
 #define SUBIR       QString::number(101)
 #define BAJAR       QString::number(102)
 #define ADELANTE    QString::number(103)

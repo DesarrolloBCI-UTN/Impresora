@@ -177,7 +177,6 @@ void MainWindow::EvaluarAccion(QString data)
                 break;
             }
             envio_linea_impresion();
-
         }
     }else if(dataList[actionIndex]==NEUTRO)
     {

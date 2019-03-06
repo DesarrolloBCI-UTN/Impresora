@@ -192,7 +192,7 @@ void MainWindow::envio_linea_impresion()
 
     serial->write("#");
     Texto2=lineas_codigo.at(i);
-    serial->write(Texto2.toLocal8Bit()); //convierto a qBYtearray y envio el QBYTE
+    serial->write(Texto2.toLocal8Bit()); //convierto a qBytearray y envio el QBYTE
     serial->write("$\n");
 
 
