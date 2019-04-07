@@ -1,3 +1,0 @@
-﻿# Hardware Design
-
-Hardware Utilizado.

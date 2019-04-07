@@ -24,7 +24,7 @@ void MainWindow::on_btnConnect_clicked()
         update(true);
         socket = new QTcpSocket(this);
         socket_events();
-        socket->connectToHost(ui->txtIP->text(), ui->txtPort->text().toInt());
+        socket->connectToHost(ui->txtIP->text(), ui->txtPort->text().toUShort());
     }
     else
     {
@@ -42,7 +42,7 @@ void MainWindow::on_btnConnect_clicked()
 void MainWindow::on_btnListen_clicked()
 {
     update(true);
-    server.listen(QHostAddress(ui->txtIP->text()), ui->txtPort->text().toInt());
+    server.listen(QHostAddress(ui->txtIP->text()), ui->txtPort->text().toUShort());
 }
 
 void MainWindow::update(bool connected)
@@ -146,7 +146,7 @@ void MainWindow::EvaluarAccion(QString data)
      */
     QStringList dataList = data.split(QRegExp("\\W+"), QString::SkipEmptyParts);
 
-    if(dataList[intensityIndex]>INTENSIDAD_BASE)
+    if(dataList[intensityIndex].toInt()>INTENSIDAD_BASE)
     {
 
         if(dataList[actionIndex]==ACCION)
@@ -176,17 +176,20 @@ void MainWindow::EvaluarAccion(QString data)
             default:
                 break;
             }
-            envio_linea_impresion();
+            //envio_linea_impresion();
         }
     }else if(dataList[actionIndex]==NEUTRO)
     {
-          ui->frame->setStyleSheet("QFrame { color: rgb(255,0,0) }");
+
+        ui->frame->setStyleSheet("QFrame { color: rgb(255,0,0) }");
         emit timer->start(CBFreq);
+
+
         /*
          * No mantiene accion previa
          */
         lineas_codigo=PARAR.split(QRegExp("\\W+"), QString::SkipEmptyParts);
-        envio_linea_impresion();
+        //envio_linea_impresion();
 
     }
 }

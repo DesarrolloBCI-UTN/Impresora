@@ -1,13 +1,11 @@
 #ifndef TCP_SERVER_H
 #define TCP_SERVER_H
 
+#include <QString>
+
 #define actionIndex     0
 #define intensityIndex  1
 
-
-/*
- * Comandos desde el casco
- */
 
 /*
  * El casco indica 1 como neutro, por eso lo defino como 1
@@ -15,8 +13,7 @@
 #define NEUTRO QString::number(1)
 #define ACCION QString::number(2)
 
-
-
+#define INTENSIDAD_BASE 40  //Instensidad del comando valido.
 
 /*
  * Comandos hacia el hardware
@@ -28,8 +25,6 @@
 #define ATRAS       QString::number(104)
 #define IZQUIERDA   QString::number(105)
 #define DERECHA     QString::number(106)
-
-#define INTENSIDAD_BASE QString::number(400)
 
 
 
