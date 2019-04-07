@@ -180,10 +180,8 @@ void MainWindow::EvaluarAccion(QString data)
         }
     }else if(dataList[actionIndex]==NEUTRO)
     {
-
+        if(timer->isActive()==false) emit timer->start(CBFreq);
         ui->frame->setStyleSheet("QFrame { color: rgb(255,0,0) }");
-        emit timer->start(CBFreq);
-
 
         /*
          * No mantiene accion previa

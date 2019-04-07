@@ -73,7 +73,7 @@ private:
     QTcpSocket *socket;
 
     uint Accion = 0; //variable del temporizador que determina la accion a realizar
-    uint CBFreq = 500;
+    int CBFreq = 500;
 
     int flag_conectado=0;
     int flag_impresion=0;
